@@ -1,4 +1,5 @@
-#include "oled.h"
+#include "oled_utils.h"
+#include <stdio.h>
 
 static void render_qmk_logo(void) {
   static const char PROGMEM qmk_logo[] = {
@@ -9,8 +10,11 @@ static void render_qmk_logo(void) {
   oled_write_P(qmk_logo, false);
 }
 
+char wpm_str[10];
+
 void render_wpm(void) {
-    oled_write_P(PSTR("WPM"), false);
+    sprintf(wpm_str, "       WPM: %03d", get_current_wpm());
+    oled_write(wpm_str, false);
 }
 
 void render_status(void) {

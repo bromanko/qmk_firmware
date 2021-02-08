@@ -9,6 +9,7 @@ OLED_DRIVER_ENABLE = yes
 RGBLIGHT_ENABLE = yes
 
 ifeq ($(strip $(OLED_DRIVER_ENABLE)), yes)
-	SRC += oled.c
+	WPM_ENABLE = yes
+	SRC += oled_utils.c
 endif
 

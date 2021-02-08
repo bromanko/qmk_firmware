@@ -2,7 +2,7 @@
 #include "manna-harbour_miryoku.h"
 
 #ifdef OLED_DRIVER_ENABLE
-#include "oled.h"
+#include "oled_utils.h"
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 	return OLED_ROTATION_180;
@@ -20,7 +20,7 @@ void oled_task_user(void) {
 
 
 #ifdef RGBLIGHT_ENABLE
-#include "rgb.h"
+#include "rgb_utils.h"
 
 void keyboard_post_init_user(void) {
     rgblight_layers = rgb_layers;

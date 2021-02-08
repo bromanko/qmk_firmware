@@ -10,7 +10,7 @@ static void render_qmk_logo(void) {
 }
 
 void render_wpm(void) {
-    oled_write_P("WPM", false);
+    oled_write_P(PSTR("WPM"), false);
 }
 
 void render_status(void) {

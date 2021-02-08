@@ -4,6 +4,14 @@ USER_NAME := manna-harbour_miryoku
 MIRYOKU_NAV := VI
 MIRYOKU_MAPPING := EXTENDED_THUMBS
 
+CONSOLE_ENABLE = no
 OLED_DRIVER_ENABLE = yes
 RGBLIGHT_ENABLE = yes
-CONSOLE_ENABLE = no
+
+ifeq ($(strip $(OLED_DRIVER_ENABLE)), yes)
+	SRC += oled.c
+endif
+
+ifeq ($(strip $(RGBLIGHT_ENABLE)), yes)
+#	SRC += oled_utils.c
+endif

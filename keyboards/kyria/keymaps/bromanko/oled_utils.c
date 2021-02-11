@@ -66,9 +66,11 @@ void render_status(void) {
     oled_write_P(PSTR("\n\n"), false);
 
     // RGB information
-    oled_write_P(PSTR("Hue:     [----------]"), false);
-    oled_write_P(PSTR("Sat:     [----------]"), false);
-    oled_write_P(PSTR("Bri:     [----------]"), false);
-
-    // Host Keyboard LED Status
+    if (rgblight_is_enabled()) {
+        oled_write_P(PSTR("Hue:     [----------]"), false);
+        oled_write_P(PSTR("Sat:     [----------]"), false);
+        oled_write_P(PSTR("Bri:     [----------]"), false);
+    } else {
+        oled_write_P(PSTR("RGB:     Off\n\n\n"), false);
+    }
 }

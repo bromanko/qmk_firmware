@@ -45,7 +45,24 @@ void render_status(void) {
     oled_write_P(IS_LED_ON(led_usb_state, USB_LED_NUM_LOCK)    ? PSTR("123") : PSTR("   "), false);
     oled_write_P(PSTR("\n"), false);
 
-    oled_write_P(PSTR("Mods:    S C A G"), false);
+    uint16_t lsft = keyboard_report->mods & MOD_BIT(KC_LSHIFT);
+    uint16_t rsft = keyboard_report->mods & MOD_BIT(KC_RSHIFT);
+    oled_write_P(PSTR("Mods:    "), false);
+    oled_write_P((lsft || rsft) ? PSTR("S") : PSTR(" "), false);
+    oled_write_P(PSTR(" "), false);
+
+    uint16_t lctr = keyboard_report->mods & MOD_BIT(KC_LCTRL);
+    uint16_t rctr = keyboard_report->mods & MOD_BIT(KC_RCTRL);
+    oled_write_P((lctr || rctr) ? PSTR("C") : PSTR(" "), false);
+
+    uint16_t lalt = keyboard_report->mods & MOD_BIT(KC_LALT);
+    uint16_t ralt = keyboard_report->mods & MOD_BIT(KC_RALT);
+    oled_write_P((lalt || ralt) ? PSTR("A") : PSTR(" "), false);
+    oled_write_P(PSTR(" "), false);
+
+    uint16_t lgui = keyboard_report->mods & MOD_BIT(KC_LGUI);
+    uint16_t rgui = keyboard_report->mods & MOD_BIT(KC_RGUI);
+    oled_write_P((lgui || rgui) ? PSTR("G") : PSTR(" "), false);
     oled_write_P(PSTR("\n\n"), false);
 
     // RGB information

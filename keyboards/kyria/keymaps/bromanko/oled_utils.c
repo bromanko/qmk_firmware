@@ -16,10 +16,10 @@ void progress_str(char *meter, uint8_t val, uint8_t max) {
     memset(meter, 0, strlen(meter));
 
     const uint8_t segments = 10;
-//    ratio = val / max;
+    uint8_t filled = val / (float)max * segments;
     strcat(meter, "[");
-    for (uint8_t i = 1; i < segments; i++) {
-        strcat(meter, " ");
+    for (uint8_t i = 0; i < segments - 1; i++) {
+        strcat(meter, (i < filled) ? "-" : " ");
     }
     strcat(meter, "]");
 }
